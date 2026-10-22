@@ -14,12 +14,19 @@
                 --color-neutral-30: hsl(220 10% 30%);
                 --color-neutral-20: hsl(220 10% 20%);
                 --color-neutral-10: hsl(220 10% 10%);
+
+                /* Accent colors matching the charts */
+                --color-us: #1d4ed8;
+                --color-us-light: #e8eefc;
+                --color-china: #c2410c;
+                --color-china-light: #fbece4;
             }
 
             html {
                 font: 100%/1.5 system-ui;
                 counter-reset: figure;
-                background: var(--color-neutral-95);
+                background: #eef2f8;
+                min-height: 100%;
                 max-width: min(75vw, 80em);
                 margin: 0 auto;
             }
@@ -54,8 +61,10 @@
                     padding: 0.2em 0.5em;
                     margin-inline: auto;
                     color: white;
-                    background: var(--color-neutral-40);
+                    background: var(--color-us);
+                    border-radius: 999px;
                     font-size: 40%;
+                    letter-spacing: 0.08em;
                     text-transform: uppercase;
                     white-space: nowrap;
                 }
@@ -63,11 +72,38 @@
 
             h2 {
                 font-size: 180%;
-                color: var(--color-neutral-30);
+                color: var(--color-neutral-20);
+                border-bottom: 3px solid var(--color-us);
             }
 
             h3 {
                 font-size: 130%;
+                display: inline-block;
+                padding: 0.3em 0.8em;
+                border-radius: 0.4em;
+            }
+
+            h3.for {
+                color: var(--color-china);
+                background: var(--color-china-light);
+            }
+
+            h3.against {
+                color: var(--color-us);
+                background: var(--color-us-light);
+            }
+
+            section.for li > strong {
+                color: var(--color-china);
+            }
+
+            section.against li > strong {
+                color: var(--color-us);
+            }
+
+            .decisions-label {
+                font-weight: 600;
+                color: var(--color-neutral-30);
             }
 
             /* Lists */
@@ -79,11 +115,11 @@
 
             li {
                 &::marker {
-                    color: var(--color-neutral-40);
+                    color: var(--color-neutral-60);
                 }
 
                 + li {
-                    margin-top: 0.2em;
+                    margin-top: 0.8em;
                 }
             }
 
@@ -92,13 +128,25 @@
             header {
                 padding-block: 1em;
                 text-align: center;
+
+                p {
+                    margin: 0.2em 0;
+                    color: var(--color-neutral-30);
+                }
+
+                em {
+                    color: var(--color-us);
+                    font-style: normal;
+                }
             }
 
             main {
                 background: white;
                 color: var(--color-neutral-20);
                 border-radius: 1rem;
-                padding: 0.1rem 2rem;
+                padding: 0.1rem 2rem 1.5rem;
+                margin-bottom: 3rem;
+                box-shadow: 0 0.3em 1.5em hsl(220 30% 70% / 0.25);
             }
 
             /* Figures */
@@ -107,8 +155,10 @@
                 margin: 1em 0;
                 padding: 0.5rem;
                 margin-inline: -0.5em;
-                border: 1px solid var(--color-neutral-80);
-                box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
+                border: 1px solid var(--color-neutral-90);
+                border-radius: 0.6rem;
+                overflow: hidden;
+                box-shadow: 0 0.2em 0.6em hsl(220 20% 80% / 0.4);
                 text-align: center;
                 background: white;
 
@@ -124,7 +174,7 @@
                     &::before {
                         content: "Figure " counter(figure) ": ";
                         font-weight: bold;
-                        color: var(--color-neutral-40);
+                        color: var(--color-us);
                     }
 
                     a:not(:hover, :focus, :active) {
@@ -157,34 +207,34 @@
         <main>
             <h2>Proposition: “China, not the United States, is most responsible for climate change.”</h2>
 
-            <section>
-                <h3>FOR the Proposition</h3>
+            <section class="for">
+                <h3 class="for">FOR the Proposition</h3>
 
                 <figure>
                     <img src="fig1_for.png" alt="Line chart of annual CO2 emissions from 1990 to 2018. China's line rises from 2.2 to 10.3 gigatonnes and passes the United States in 2005; the US stays near 5 gigatonnes." style="max-width:100%" />
                     <figcaption>Annual CO2 emissions, China vs. the United States, 1990–2018. Source: World Bank / IMF Climate Change Indicators, CO2 emissions (kt).</figcaption>
                 </figure>
 
-                <p>Design Decisions and Rationale:</p>
+                <p class="decisions-label">Design Decisions and Rationale:</p>
 
                 <ul>
                     <li><strong>Data filtering: Starting the x-axis at 1990 (Score: -1)</strong><br />We started in 1990 because it shows China’s emissions more than quadrupling (2.2 to 10.3 Gt) while the US stays relatively flat. This drastic contrast makes China look like a major problem when it comes to climate change. The title, “China has become the engine of global emissions,” drives that message home. Starting in 1960 would have shown decades of higher US emissions, so we left them out as a deceptive measure.</li>
                     <li><strong>Data transformation: Using country totals without adjusting for population (Score: -1)</strong><br />We used country totals because they make China’s emissions look as large as possible. China has about 4.3 times as many people as the US, so per person the average American actually emits about twice as much. Leaving out population keeps readers focused on China’s size instead.</li>
-                    <li><strong>Line width: Making China’s line thicker (Score: 0.5)</strong><br />We made China’s line thicker so it’s the first thing readers notice and its rise feels more powerful. The thickness doesn’t represent any data, so it adds emphasis without changing the numbers.</li>
+                    <li><strong>Line width: Making China’s line thicker (Score: 0.5)</strong><br />We made China’s line thicker to highlight it as the focus of the chart, which is a common way to draw attention to the main subject of the graph. It does not change any of the data values, and the readers can still comapre both lines accurately. This gives China's line more visual weight.</li>
                     <li><strong>Area: Shading the gap after 2005 (Score: -0.5)</strong><br />We shaded the gap after China passes the US so its extra emissions look like a large, growing mass, and labeled it with a calculated ratio (“China now emits 2.1x as much”) to make the difference concrete. We only shaded China’s lead, so the years when the US emitted more don’t stand out.</li>
                     <li><strong>Line, color, and position: Red and blue lines on a zero-based axis (Score: +1.5)</strong><br />We used a line chart with a y-axis starting at zero, and time along the x-axis. Red and blue make the countries easy to distinguish, and red adds a subtle sense of alarm around China. Because the basic design looks fair, readers are more likely to accept the conclusion.</li>
                 </ul>
             </section>
 
-            <section>
-                <h3>AGAINST the Proposition</h3>
+            <section class="against">
+                <h3 class="against">AGAINST the Proposition</h3>
 
                 <figure>
                     <img src="fig2_against.png" alt="Area chart of cumulative CO2 emissions since 1960. The United States reaches 279 gigatonnes by 2018 and China 205 gigatonnes, a 75 gigatonne gap; in 1990 the US total was 3.5 times China's." style="max-width:100%" />
                     <figcaption>Cumulative CO2 emissions since 1960, United States vs. China, 1960–2018. Source: World Bank / IMF Climate Change Indicators, CO2 emissions (kt); cumulative = running sum of annual emissions from 1960.</figcaption>
                 </figure>
 
-                <p>Design Decisions and Rationale:</p>
+                <p class="decisions-label">Design Decisions and Rationale:</p>
 
                 <ul>
                     <li><strong>Data transformation: Using a running total instead of yearly emissions (Score: +1)</strong><br />We used a running total because it shows how much CO2 each country has put into the atmosphere overall, and the US still leads, 279 vs. 205 Gt. Since CO2 stays in the atmosphere for centuries, this makes a strong case that the US is more responsible historically, even though China emits more each year now.</li>
