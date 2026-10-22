@@ -14,14 +14,14 @@
                 --color-neutral-30: hsl(220 10% 30%);
                 --color-neutral-20: hsl(220 10% 20%);
                 --color-neutral-10: hsl(220 10% 10%);
-
+ 
                 /* Accent colors matching the charts */
                 --color-us: #1d4ed8;
                 --color-us-light: #e8eefc;
                 --color-china: #c2410c;
                 --color-china-light: #fbece4;
             }
-
+ 
             html {
                 font: 100%/1.5 system-ui;
                 counter-reset: figure;
@@ -30,9 +30,9 @@
                 max-width: min(75vw, 80em);
                 margin: 0 auto;
             }
-
+ 
             /* Headings */
-
+ 
             h1,
             h2,
             h3,
@@ -43,18 +43,18 @@
                 font-weight: 600;
                 text-wrap: balance;
             }
-
+ 
             h1,
             h2 {
                 border-bottom: 1px solid var(--color-neutral-80);
                 padding-bottom: 0.2em;
             }
-
+ 
             h1 {
                 margin-block: 1em 0.5rem;
                 font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
                 font-weight: 800;
-
+ 
                 small {
                     display: block;
                     width: fit-content;
@@ -69,77 +69,77 @@
                     white-space: nowrap;
                 }
             }
-
+ 
             h2 {
                 font-size: 180%;
                 color: var(--color-neutral-20);
                 border-bottom: 3px solid var(--color-us);
             }
-
+ 
             h3 {
                 font-size: 130%;
                 display: inline-block;
                 padding: 0.3em 0.8em;
                 border-radius: 0.4em;
             }
-
+ 
             h3.for {
                 color: var(--color-china);
                 background: var(--color-china-light);
             }
-
+ 
             h3.against {
                 color: var(--color-us);
                 background: var(--color-us-light);
             }
-
+ 
             section.for li > strong {
                 color: var(--color-china);
             }
-
+ 
             section.against li > strong {
                 color: var(--color-us);
             }
-
+ 
             .decisions-label {
                 font-weight: 600;
                 color: var(--color-neutral-30);
             }
-
+ 
             /* Lists */
-
+ 
             ul,
             ol {
                 padding-inline-start: 2em;
             }
-
+ 
             li {
                 &::marker {
                     color: var(--color-neutral-60);
                 }
-
+ 
                 + li {
                     margin-top: 0.8em;
                 }
             }
-
+ 
             /* Sectioning elements */
-
+ 
             header {
                 padding-block: 1em;
                 text-align: center;
-
+ 
                 p {
                     margin: 0.2em 0;
                     color: var(--color-neutral-30);
                 }
-
+ 
                 em {
                     color: var(--color-us);
                     font-style: normal;
                 }
             }
-
+ 
             main {
                 background: white;
                 color: var(--color-neutral-20);
@@ -148,9 +148,9 @@
                 margin-bottom: 3rem;
                 box-shadow: 0 0.3em 1.5em hsl(220 30% 70% / 0.25);
             }
-
+ 
             /* Figures */
-
+ 
             figure {
                 margin: 1em 0;
                 padding: 0.5rem;
@@ -161,7 +161,7 @@
                 box-shadow: 0 0.2em 0.6em hsl(220 20% 80% / 0.4);
                 text-align: center;
                 background: white;
-
+ 
                 > figcaption {
                     font: 500 75% var(--font-sans);
                     background: var(--color-neutral-95);
@@ -170,13 +170,13 @@
                     margin-top: 0.5rem;
                     counter-increment: figure;
                     text-align: left;
-
+ 
                     &::before {
                         content: "Figure " counter(figure) ": ";
                         font-weight: bold;
                         color: var(--color-us);
                     }
-
+ 
                     a:not(:hover, :focus, :active) {
                         color: inherit;
                         text-decoration: underline;
@@ -190,68 +190,68 @@
             }
         </style>
     </head>
-
+ 
     <body>
         <header>
             <h1>
                 <small>Project 2</small>
                 Persuasive or Deceptive Visualization?
             </h1>
-
+ 
             <p><strong>Jeffrey Kang</strong> — <em>jak053@ucsd.edu</em></p>
             <p><strong>Peter Little</strong> — <em>pjlittle@ucsd.edu</em></p>
             <p><strong>Chaylen Nguyen-Tran</strong> — <em>cnguyentran@ucsd.edu</em></p>
             <p><strong>Jayleen Shang</strong> — <em>jeshang@ucsd.edu</em></p>
         </header>
-
+ 
         <main>
             <h2>Proposition: “China, not the United States, is most responsible for climate change.”</h2>
-
+ 
             <section class="for">
                 <h3 class="for">FOR the Proposition</h3>
-
+ 
                 <figure>
                     <img src="fig1_for.png" alt="Line chart of annual CO2 emissions from 1990 to 2018. China's line rises from 2.2 to 10.3 gigatonnes and passes the United States in 2005; the US stays near 5 gigatonnes." style="max-width:100%" />
                     <figcaption>Annual CO2 emissions, China vs. the United States, 1990–2018. Source: World Bank / IMF Climate Change Indicators, CO2 emissions (kt).</figcaption>
                 </figure>
-
+ 
                 <p class="decisions-label">Design Decisions and Rationale:</p>
-
+ 
                 <ul>
-                    <li><strong>Data filtering: Starting the x-axis at 1990 (Score: -1)</strong><br />We started in 1990 because it shows China’s emissions more than quadrupling (2.2 to 10.3 Gt) while the US stays relatively flat. This drastic contrast makes China look like a major problem when it comes to climate change. The title, “China has become the engine of global emissions,” drives that message home. Starting in 1960 would have shown decades of higher US emissions, so we left them out as a deceptive measure.</li>
-                    <li><strong>Data transformation: Using country totals without adjusting for population (Score: -1)</strong><br />We used country totals because they make China’s emissions look as large as possible. China has about 4.3 times as many people as the US, so per person the average American actually emits about twice as much. Leaving out population keeps readers focused on China’s size instead.</li>
-                    <li><strong>Line width: Making China’s line thicker (Score: 0.5)</strong><br />We made China’s line thicker to highlight it as the focus of the chart, which is a common way to draw attention to the main subject of the graph. It does not change any of the data values, and the readers can still comapre both lines accurately. This gives China's line more visual weight.</li>
-                    <li><strong>Area: Shading the gap after 2005 (Score: -0.5)</strong><br />We shaded the gap after China passes the US so its extra emissions look like a large, growing mass, and labeled it with a calculated ratio (“China now emits 2.1x as much”) to make the difference concrete. We only shaded China’s lead, so the years when the US emitted more don’t stand out.</li>
-                    <li><strong>Line, color, and position: Red and blue lines on a zero-based axis (Score: +1.5)</strong><br />We used a line chart with a y-axis starting at zero, and time along the x-axis. Red and blue make the countries easy to distinguish, and red adds a subtle sense of alarm around China. Because the basic design looks fair, readers are more likely to accept the conclusion.</li>
+                    <li><strong>Data filtering: Starting the x-axis at 1990 (Score: -1)</strong><br />We started in 1990 because it shows China’s emissions more than quadrupling (2.2 to 10.3 Gt) while the US stays relatively flat. This heavy contrast emphasizes China’s impact as a major contributor to climate change. The title, “China has become the engine of global emissions,” drives that message home. Including data from 1960 would have shown decades of higher US emissions, so we left them out as a deceptive measure.</li>
+                    <li><strong>Data transformation: Using country totals without adjusting for population (Score: -1)</strong><br />We used country totals because they make China’s emissions appear as large as possible. Since China has about 4.3 times as many people as the US, the average American actually emits about twice as much as the average Chinese person. Leaving out the population of each country keeps readers focused on China’s overall greater output instead.</li>
+                    <li><strong>Line width: Making China’s line thicker (Score: -1)</strong><br />We decided to use a thicker line to represent China’s emissions so that it catches the audience’s eyes first and adds emphasis to the dramatic increase compared to the US. The line weight edit does not represent any data feature, so it lays intentional stress without changing the numbers.</li>
+                    <li><strong>Area: Shading the gap after 2005 (Score: -0.5)</strong><br />We shaded the gap after China surpasses the US in 2005 so its extra emissions look like a large, growing mass, and labeled it with a calculated ratio (“China now emits 2.1x as much”) to make the difference concrete. We only shaded China’s lead, so the previous years when the US emitted more don’t stand out.</li>
+                    <li><strong>Line, color, and position: Red and blue lines on a zero-based axis (Score: +1.5)</strong><br />We used a line chart with a y-axis starting at zero, and time along the x-axis. Red and blue make the countries easy to distinguish, and red adds a subtle sense of alarm around China. Because the basic design looks simple and clean, readers are more likely to accept the conclusion.</li>
                 </ul>
             </section>
-
+ 
             <section class="against">
                 <h3 class="against">AGAINST the Proposition</h3>
-
+ 
                 <figure>
                     <img src="fig2_against.png" alt="Area chart of cumulative CO2 emissions since 1960. The United States reaches 279 gigatonnes by 2018 and China 205 gigatonnes, a 75 gigatonne gap; in 1990 the US total was 3.5 times China's." style="max-width:100%" />
                     <figcaption>Cumulative CO2 emissions since 1960, United States vs. China, 1960–2018. Source: World Bank / IMF Climate Change Indicators, CO2 emissions (kt); cumulative = running sum of annual emissions from 1960.</figcaption>
                 </figure>
-
+ 
                 <p class="decisions-label">Design Decisions and Rationale:</p>
-
+ 
                 <ul>
-                    <li><strong>Data transformation: Using a running total instead of yearly emissions (Score: +1)</strong><br />We used a running total because it shows how much CO2 each country has put into the atmosphere overall, and the US still leads, 279 vs. 205 Gt. Since CO2 stays in the atmosphere for centuries, this makes a strong case that the US is more responsible historically, even though China emits more each year now.</li>
-                    <li><strong>Data filtering: Starting the running total in 1960 (Score: -1)</strong><br />We started in 1960 because it captures decades of high US emissions, which gives the US a lead China hasn’t caught up to. It’s the first year in the dataset, so it looks like a natural choice, but starting in 1990 would put China ahead (169 vs. 154 Gt). The subtitle, “China has never caught up to the US,” makes the US lead sound permanent.</li>
-                    <li><strong>Area: Shading the gap and the area under China’s line (Score: -0.5)</strong><br />We shaded the gap between the lines in blue so the US’s extra emissions look like a huge, solid block. Filled areas emphasize volume, which makes the US lead feel heavier than plain lines would.</li>
+                    <li><strong>Data transformation: Using a running total instead of yearly emissions (Score: +1)</strong><br />We used a running total because it shows how much CO2 each country has put into the atmosphere overall, with the US still in the lead today (279 vs. 205 Gt). Since CO2 stays in the atmosphere for centuries, this makes a strong case that the US is more responsible historically, even though China emits more per year at present.</li>
+                    <li><strong>Data filtering: Starting the running total in 1960 (Score: -0.5)</strong><br />We included data starting in 1960 because it captures decades of high US emissions, which gives the US a lead China hasn’t caught up to. It’s the first year in the dataset, so it looks like a natural choice, but starting in 1990 would put China ahead (169 vs. 154 Gt). The subtitle, “China has never caught up to the US,” makes the US lead sound stable and permanent.</li>
+                    <li><strong>Area: Shading the gap and the area under China’s line (Score: -0.5)</strong><br />We shaded the gap between the lines in blue so the US’s extra emissions appear as a large, solid block. Filled areas emphasize volume, which makes the US lead feel heavier than plain lines would.</li>
                     <li><strong>Dotted line: Marking the gap in 1990 and 2018 (Score: +0.5)</strong><br />We added dotted lines to put an exact number on the US lead (75 Gt in 2018), and the annotation shows the US had emitted 3.5 times China’s total by 1990. Highlighting the gap keeps attention off the trend: at 2018 rates, China would close it in about 14 years.</li>
-                    <li><strong>Color and position: Keeping the same encoding as Figure 1 (Score: +1.5)</strong><br />We used the same colors, line format, and zero-based y-axis as Figure 1 so the two charts feel like a fair, side-by-side comparison. That sense of fairness makes readers more likely to trust this chart’s conclusion.</li>
+                    <li><strong>Color and position: Keeping the same encoding as Figure 1 (Score: +1.5)</strong><br />We used the same colors, line format, and zero-based y-axis as Figure 1 so the two charts feel like a fair, side-by-side comparison. That sense of fairness makes readers more likely to trust this chart’s conclusion without closer inspection.</li>
                 </ul>
             </section>
-
+ 
             <section>
                 <h2>Final Reflection</h2>
-
+ 
                 <p>The proposition we are trying to persuade is: “China, not the United States, is most responsible for climate change.” Figure 1 supports this proposition by showing that China’s annual CO2 emissions have more than quadrupled since 1990 and are now about twice those of the US. Figure 2 argues against it by showing that, counting all emissions since 1960, the US has put more CO2 into the atmosphere than China (279 vs. 205 Gt). Our main deceptive technique is data filtering: Figure 1 starts in 1990 and Figure 2 starts in 1960, and the start year decides which country looks more responsible. This happens because the US industrialized first and emitted far more for decades, while China’s emissions only took off as it industrialized later. If Figure 2’s running total started in 1990 instead, China would lead (169 vs. 154 Gt). We used two different measures, yearly emissions and a running total, so each chart’s time window feels natural for its own argument rather than looking like the same chart cropped two ways.</p>
-
-                <p>At first, it was difficult to decide on which dataset we wanted to work with since there is a lot of data and the team had different interests. We ultimately decided to go with the climate change dataset within the World Bank/IMF Climate Change Indicators since it combined our interests. It was also difficult to figure out which proposition we wanted to go with, balancing ethics and overall how we would convey that problem. We had some pre-existing beliefs from other classes and prior knowledge about which country contributes more to climate change. But after wrangling and then visualizing the data, it was surprising to see that the leader in producing the most carbon emissions changes depending on the metric. What we also found surprising was how easy it is to mislead viewers by presenting data using certain design choices. Coming away from this project, we understand that there are often two sides to every story, and data visualization is a great tool to obscure one for the other.</p>
-
+ 
+                <p>At first, it was difficult to decide on which dataset we wanted to work with since there is a large variety of topics, each with a plethora of data, and the team had different interests. We ultimately decided to go with the climate change dataset within the World Bank/IMF Climate Change Indicators since it combined our interests. It was also difficult to figure out which proposition we wanted to go with, balancing ethics and overall how we would convey that problem. We had some pre-existing beliefs from other classes and prior knowledge about which country contributes more to climate change. But after wrangling and then visualizing the data, it was surprising to see that the leader in producing the most carbon emissions changes depending on the metric. We also found it surprising how easy it is to mislead viewers by presenting data using certain design choices. Coming away from this project, we understand that there are often two sides to every story, and data visualization is a great tool to obscure one for the other.</p>
+ 
                 <p>We define ethical analysis to be a fair representation of the data that is not fabricated, and ethical visualization as displaying that data in a clear format to the viewer. The line that crosses into misleading visualizations versus persuasive ones is when the data is either fabricated, misused, or misrepresented. For example, some data could have been made up, or certain differences in the data could be blown up to make them seem larger than they actually are. Our charts use real data and axes that start at zero. However, we chose to start one chart’s x-axis at 1990 and the other at 1960 to make one country or the other look more responsible. Neither choice is false, but each one hides information that would change the reader’s conclusion. Even so, we still think the data is sound. Our choices highlight differences that really exist rather than inventing them: China does emit more each year now, and the US has emitted more in total over time. The time window decides which of these true differences the reader sees. Because of this, we think a persuasive choice becomes misleading when a reasonable alternative would flip the takeaway, and the reader is not told about it.</p>
             </section>
         </main>
